@@ -261,6 +261,7 @@ class TaxCollection extends BaseModel implements ModelInterface, ArrayAccess, \J
     public function setResponsibleParty($responsible_party)
     {
         $allowedValues = $this->getResponsiblePartyAllowableValues();
+
         // SUP-12433 - Amazon may send this optional field as empty string so we have to cater for that scenario here
         // @see https://github.com/jlevers/selling-partner-api/issues/799
         if ($responsible_party === '') {

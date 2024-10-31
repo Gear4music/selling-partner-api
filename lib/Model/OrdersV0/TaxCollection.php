@@ -268,13 +268,6 @@ class TaxCollection extends BaseModel implements ModelInterface, ArrayAccess, \J
         }
         
         if (!is_null($responsible_party) &&!in_array(strtoupper($responsible_party), $allowedValues, true)) {
-        if (
-            // SUP-12433 - Amazon may send this optional field as empty string so we have to cater for that scenario here
-            // @see https://github.com/jlevers/selling-partner-api/issues/799
-            $responsible_party !== ''
-            && !is_null($responsible_party)
-            && !in_array(strtoupper($responsible_party), $allowedValues, true)
-        ) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'responsible_party', must be one of '%s'",
